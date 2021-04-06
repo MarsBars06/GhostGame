@@ -1,8 +1,15 @@
-
+# Made by MarsBars06 on Github
 from random import randint
 # Importing the randint function which chooses a random integer
-import winsound
-# Imports the windows sound library
+import playsound
+# Imports the playsound library, better OS compatibility than winsound
+import os
+dirname = os.path.dirname(__file__)
+LoseSound_filename = os.path.join(dirname, 'resources/LoseSound.wav')
+WinSound_filename = os.path.join(dirname, 'resources/WinSound.wav')
+# These lines of code put the path of the SFX wav files into variables
+# which will be used later on.
+# These are based on relative paths.
 print("Ghost Game")
 feelingBrave = True
 # The feelingBrave variable will come in use when it is used in a while loop
@@ -23,11 +30,9 @@ while feelingBrave:
     doorChosenNum = int(doorChosen)
     # Converts the user input into an integer
     if doorChosenNum == ghostDoor:
-        winsound.MessageBeep(type=winsound.MB_ICONHAND)
-        # SFX
         print("GHOST!!!")
         feelingBrave = False
-        # Making feelingBrave False breaks the loop and code execution moves to
+        # Making feelingBrave False -> breaks the loop and code execution moves to
         # after the end of the while loop
     else:
         print("No ghost!")
@@ -37,5 +42,7 @@ while feelingBrave:
 # This code is executed when the user types a number that happens
 # to be the ghost door.
 print("Run away!")
-print("Game over!  You scored", score, "points")
+print("Game over!/nYou scored", score, "points")
+playsound.playsound(LoseSound_filename)
+# SFX
 input("Press Enter to exit...")
