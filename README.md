@@ -7,4 +7,5 @@ A simple console game made with Python 3
 - If the door you pick has a ghost behind it, the game ends.
 # Branches
 There are branches which are basically different variations of this one game
+- [main (console)](https://github.com/MarsBars06/GhostGame)
 - [tkintergui](https://github.com/MarsBars06/GhostGame/tree/tkintergui)
