@@ -4,11 +4,15 @@ from random import randint
 import playsound
 # Imports the playsound library, better OS compatibility than winsound
 import os
-dirname = os.path.dirname(__file__)
-LoseSound_filename = os.path.join(dirname, 'resources/LoseSound.wav')
-WinSound_filename = os.path.join(dirname, 'resources/WinSound.wav')
-# These lines of code put the path of the SFX wav files into variables
-# which will be used later on.
+SFX_enabled = True
+# If you want to disable the sound effects played, change this line to:
+# SFX_enabled = False
+if SFX_enabled:
+    dirname = os.path.dirname(__file__)
+    LoseSound_filename = os.path.join(dirname, 'resources/LoseSound.wav')
+    WinSound_filename = os.path.join(dirname, 'resources/WinSound.wav')
+    # These lines of code put the relative path of the SFX wav files into variables
+    # which will be used later on.  This only runs if the SFX_enabled variable is True.
 # These are based on relative paths.
 print("Ghost Game")
 feelingBrave = True
@@ -36,13 +40,17 @@ while feelingBrave:
         # after the end of the while loop
     else:
         print("No ghost!")
+        if SFX_enabled:
+            playsound.playsound(WinSound_filename, True)
+            # Only plays the sound effect if the SFX_enabled variable is True.
         print("You enter the next room.")
         score += 1
         # Adds 1 point to the score counter.
 # This code is executed when the user types a number that happens
 # to be the ghost door.
 print("Run away!")
-print("Game over!/nYou scored", score, "points")
-playsound.playsound(LoseSound_filename)
-# SFX
+print("Game over!\nYou scored", score, "points")
+if SFX_enabled:
+    playsound.playsound(LoseSound_filename, True)
+    # Only plays the sound effect 
 input("Press Enter to exit...")
