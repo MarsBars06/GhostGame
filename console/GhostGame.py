@@ -13,15 +13,16 @@ try:
 except:
     print("The module 'playsound' is not installed")
     sleep(0.5)
-    print("Please run the command 'pip install playsound'")
+    print("Please run the command 'pip install playsound' in the system terminal")
     sleep(0.5)
     SFX_enabled = False
-    print("SFX will not be played")
+    print("SFX will not be played\n")
     sleep(0.5)
 if SFX_enabled:
     dirname = os.path.dirname(__file__)
     LoseSound_filename = os.path.join(dirname, 'resources/LoseSound.wav')
     WinSound_filename = os.path.join(dirname, 'resources/WinSound.wav')
+    DoorSound_filename = os.path.join(dirname, 'resources/DoorSound.wav')
     # These lines of code put the relative path of the SFX wav files into variables
     # which will be used later on.  This only runs if the SFX_enabled variable is True.
 # These are based on relative paths.
@@ -47,6 +48,8 @@ while feelingBrave:
         # Makes sure that the input is 1, 2 or 3.
     doorChosenNum = int(doorChosen)
     # Converts the user input into an integer
+    print("You open the door...")
+    playsound.playsound(DoorSound_filename, True)
     if doorChosenNum == ghostDoor:
         print("GHOST!!!")
         feelingBrave = False
