@@ -9,4 +9,6 @@ A simple console game made with Python 3
 - Python 3.X.X (I'm testing with Python 2 as well)
 - playsound python library
   - To install the playsound library, with python installed, run `pip install playsound` in a terminal window.
+    - This command won't work if pip isn't installed
+    - If it doesn't work, search install pip on the internet.
   - If the game doesn't detect playsound, it will tell you and the game will still run, though the sound effects won't be played.
